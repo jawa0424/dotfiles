@@ -1,3 +1,8 @@
+" 対応してないバージョンを排他
+if v:version < 800 || !has('patch1108')
+	finish
+endif
+
 " tmapきた！
 tmap <C-S-q> <C-w>:q!<CR>
 tmap <C-v> <C-w>"*
