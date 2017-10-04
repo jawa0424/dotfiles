@@ -1,0 +1,4 @@
+" tmapきた！
+tmap <C-S-q> <C-w>:q!<CR>
+tmap <C-v> <C-w>"*
+tmap <S-Insert> <C-w>"*

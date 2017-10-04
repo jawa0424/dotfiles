@@ -1,0 +1,89 @@
+call plug#begin("~/vimfiles/plugged")
+
+" molokai
+Plug 'tomasr/molokai'
+
+" Emmet
+Plug 'mattn/emmet-vim'
+
+" lightline
+Plug 'itchyny/lightline.vim'
+
+" indentLine
+Plug 'Yggdroot/indentLine'
+
+" fugitive
+Plug 'tpope/vim-fugitive'
+
+" fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" NERDTree
+Plug 'scrooloose/nerdtree'
+
+" Syntastic
+Plug 'vim-syntastic/syntastic'
+
+" Go
+Plug 'fatih/vim-go'
+Plug 'vim-jp/vim-go-extra'
+
+" CSS
+Plug 'hail2u/vim-css3-syntax'
+
+" Powershell
+Plug 'PProvost/vim-ps1'
+
+call plug#end()
+
+"----------------------------------------------
+" defines
+"----------------------------------------------
+" molokai
+syntax on
+let g:molokai_original = 0
+colorscheme molokai
+hi Statement term=none gui=none
+hi Title term=none gui=none
+
+" lightline
+let g:lightline = {
+	\ 'mode_map': {'c': 'NORMAL'},
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+	\ }
+	\ }
+
+" fzf
+nmap <C-p> :Files<CR>
+imap <C-x><C-l> <plug>(fzf-complete-line)
+let g:fzf_action = {
+	\ 'ctrl-t': 'tab split',
+	\ 'ctrl-i': 'split',
+	\ 'ctrl-s': 'vsplit' }
+let g:fzf_layout = { 'down': '~20%' }
+let g:rg_command = '
+	\ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+	\ -g "*.{js,json,php,md,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst}"
+	\ -g "!{.config,.git,node_modules,vendor,build,yarn.lock,*.sty,*.bst,*.coffee,dist}/*" '
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" vim-go
+let g:go_fmt_command = 'goimports'
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:syntastic_go_checkers = ['go', 'errcheck', 'golint']
+au BufNewFile,BufRead *.go set completeopt=menu
+" filetype plugin indent on
