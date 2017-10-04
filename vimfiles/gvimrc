@@ -14,7 +14,7 @@ set lines=74
 
 " こまかいの
 set enc=utf-8
-set guifont=Ricty_Diminished_for_Powerline:h11
+set guifont=Ricty_Diminished:h11
 set visualbell t_vb=
 set renderoptions=type:directx,geom:1,renmode:5,gamma:1.9
 set antialias
