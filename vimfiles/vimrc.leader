@@ -1,6 +1,5 @@
-let mapleader = "\<Space>"
+let mapleader = "\<S-Space>"
 
-nmap <Leader>t :term bash<CR>
 nmap <Leader>r :source ~/vimfiles/vimrc<CR>
 
 " emmet変換
@@ -9,8 +8,9 @@ imap mmm <C-y>,
 " fzf系の操作
 nmap <Leader>b :Buffers<CR>
 
-" NERDTree系の操作
-nmap <Leader>t :NERDTreeToggle<CR>
+" Vaffle系の操作
+nmap <Leader>t :Vaffle %:h<CR>
+nmap <Leader>T :Vaffle<CR>
 
 " ハイライトを知る
 command! VimShowHlGroup echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
