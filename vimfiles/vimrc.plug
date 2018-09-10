@@ -29,11 +29,20 @@ Plug 'vim-syntastic/syntastic'
 Plug 'fatih/vim-go'
 Plug 'vim-jp/vim-go-extra'
 
+" CoffeeScript
+Plug 'kchmck/vim-coffee-script'
+
 " CSS
 Plug 'hail2u/vim-css3-syntax'
 
 " Powershell
 Plug 'PProvost/vim-ps1'
+
+" easymotion
+Plug 'easymotion/vim-easymotion'
+
+" toml 
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
@@ -87,3 +96,12 @@ let g:go_highlight_structs = 1
 let g:syntastic_go_checkers = ['go', 'errcheck', 'golint']
 au BufNewFile,BufRead *.go set completeopt=menu
 " filetype plugin indent on
+
+" easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+nmap <S-s> <Plug>(easymotion-overwin-f)
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
