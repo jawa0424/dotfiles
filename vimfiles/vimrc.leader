@@ -1,4 +1,4 @@
-let mapleader = "\<S-Space>"
+let mapleader = "\<C-Space>"
 
 nmap <Leader>r :source ~/vimfiles/vimrc<CR>
 

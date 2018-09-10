@@ -3,17 +3,17 @@ if !has('gui_running')
 endif
 
 " guioptions系
-set guioptions=a
+set guioptions=a!
 source $VIMRUNTIME/delmenu.vim
 set langmenu=ja_JP.utf-8
 source $VIMRUNTIME/menu.vim
 
 " 画面系
-set columns=240
-set lines=74
+set columns=179
+set lines=81
 
 " こまかいの
 set enc=utf-8
-set guifont=Ricty_Diminished:h11
+set guifont=Ricty_Diminished:h12
 set visualbell t_vb=
 set renderoptions=type:directx,geom:1,renmode:5,gamma:1.9

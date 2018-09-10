@@ -23,7 +23,6 @@ set fileformats=unix,dos,mac
 set backspace=indent,start,eol
 set wildmenu
 set showcmd
-syntax on
 
 " Commandモードを便利に
 cnoremap <C-a> <S-Left>
@@ -60,7 +59,3 @@ set iminsert=0
 set imsearch=0
 set noimcmdline
 set display+=lastline
-
-" netrw(開発用の鍵で認証する)
-let g:netrw_scp_cmd="C:\\msys64\\usr\\bin\\scp.exe -i C:\\Users\\aizawa\\.ssh\\id_rsa"
-let g:netrw_list_cmd="C:\\msys64\\usr\\bin\\ssh.exe -i C:\\Users\\aizawa\\.ssh\\id_rsa HOSTNAME ls -Fa"
