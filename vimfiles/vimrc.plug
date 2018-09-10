@@ -1,7 +1,7 @@
 call plug#begin("~/vimfiles/plugged")
 
-" molokai
-Plug 'tomasr/molokai'
+" tokyo-metro
+Plug 'koirand/tokyo-metro.vim', {'do': 'cp colors/* ~/vimfiles/colors/'}
 
 " Emmet
 Plug 'mattn/emmet-vim'
@@ -49,12 +49,10 @@ call plug#end()
 "----------------------------------------------
 " defines
 "----------------------------------------------
-" molokai
+" tokyo-metro
 syntax on
-let g:molokai_original = 0
-colorscheme molokai
-hi Statement term=none gui=none
-hi Title term=none gui=none
+set t_Co=256
+colorscheme tokyo-metro
 
 " lightline
 let g:lightline = {
