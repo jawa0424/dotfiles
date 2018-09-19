@@ -26,7 +26,7 @@ Plug 'cocopon/vaffle.vim'
 Plug 'vim-syntastic/syntastic'
 
 " Go
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do':'InstallGoBinaries' }
 Plug 'vim-jp/vim-go-extra'
 
 " CoffeeScript
@@ -43,6 +43,22 @@ Plug 'easymotion/vim-easymotion'
 
 " toml 
 Plug 'cespare/vim-toml'
+
+" splitjoin
+Plug 'AndrewRadev/splitjoin.vim'
+
+" deoplate.vim
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" Ultisnips
+Plug 'SirVer/ultisnips'
 
 call plug#end()
 
@@ -93,6 +109,7 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:syntastic_go_checkers = ['go', 'errcheck', 'golint']
+let g:go_list_type = "quickfix"
 au BufNewFile,BufRead *.go set completeopt=menu
 " filetype plugin indent on
 

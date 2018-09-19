@@ -4,6 +4,7 @@ filetype plugin on
 set laststatus=2
 set noswapfile
 set nobackup
+set autowrite
 
 " クリップボード使用可能にする
 set clipboard=unnamed,autoselect
@@ -24,6 +25,11 @@ set backspace=indent,start,eol
 set wildmenu
 set showcmd
 
+" QuickFix
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
 " Commandモードを便利に
 cnoremap <C-a> <S-Left>
 cnoremap <C-e> <S-Right>
@@ -36,6 +42,18 @@ inoremap <C-l> <Right>
 inoremap jj <Esc>
 inoremap <C-o> <C-x><C-o>
 
+" マウス(terminalっぽくする)
+set mouse=a
+
+"winpos -1865 9
+let g:did_install_default_menus = 1
+
+" 日本語対応系
+set iminsert=0
+set imsearch=0
+set noimcmdline
+set display+=lastline
+
 " 外部設定の読み込み
 if filereadable(expand('~/vimfiles/vimrc.plug'))
 	source ~/vimfiles/vimrc.plug
@@ -47,15 +65,3 @@ if filereadable(expand('~/vimfiles/vimrc.term'))
 	" ターミナル操作関連。現状空
 	source ~/vimfiles/vimrc.term
 endif
-
-" マウス(terminalっぽくする)
-set mouse=a
-
-winpos -1865 9
-let g:did_install_default_menus = 1
-
-" 日本語対応系
-set iminsert=0
-set imsearch=0
-set noimcmdline
-set display+=lastline

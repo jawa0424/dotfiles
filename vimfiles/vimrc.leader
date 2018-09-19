@@ -1,6 +1,24 @@
-let mapleader = "\<C-Space>"
+let mapleader = ","
 
-nmap <Leader>r :source ~/vimfiles/vimrc<CR>
+" .vimrc 再読み込み
+nmap <Leader>V :source ~/dotfiles/vimfiles/vimrc<CR>
+
+" for golang
+autocmd Filetype go nmap <Leader>r <Plug>(go-run)
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+autocmd FileType go nmap <Leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd Filetype go nmap <Leader>t <Plug>(go-test)
+autocmd Filetype go nmap <Leader>f <Plug>(go-test-func)
+autocmd Filetype go nmap <Leader>c <Plug>(go-coverage)
+autocmd Filetype go nmap <Leader>gi :GoImport<Space>
 
 " emmet変換
 imap mmm <C-y>,
@@ -9,8 +27,7 @@ imap mmm <C-y>,
 nmap <Leader>b :Buffers<CR>
 
 " Vaffle系の操作
-nmap <Leader>t :Vaffle %:h<CR>
-nmap <Leader>T :Vaffle<CR>
+nmap <Leader><Tab> :Vaffle %:h<CR>
 
 " ハイライトを知る
 command! VimShowHlGroup echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')

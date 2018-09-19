@@ -17,3 +17,12 @@ set enc=utf-8
 set guifont=Ricty_Diminished:h12
 set visualbell t_vb=
 set renderoptions=type:directx,geom:1,renmode:5,gamma:1.9
+
+" plug依存の設定をgvimrc上で読み込む
+" (colorscheme未反映対策)
+if filereadable(expand('~/vimfiles/vimrc.plug'))
+	source ~/vimfiles/vimrc.plug
+endif
+
+" python3つかえるように
+let g:python3_host_prog = expand('C:\Python35\python.exe')
